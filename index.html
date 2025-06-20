@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        #searchInput {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+            max-width: 100%;
+        }
+        .tag-filter {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .tag-btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 15px;
+            background-color: #007acc;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+        }
+        .tag-btn:hover {
+            background-color: #005a9e;
+        }
+        .tag-btn.active {
+            background-color: #005a9e;
+        }
+        .post {
+            background: white;
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .post:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .post-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .post-title a:hover {
+            color: #007acc;
+        }
+        .post-date {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .post-excerpt {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .post-tag {
+            background-color: #f0f0f0;
+            color: #666;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .no-posts {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>My Blog</h1>
+        <p>A collection of thoughts and ideas</p>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search posts..." />
+    </div>
+
+    <div class="tag-filter" id="tagFilter">
+        <button class="tag-btn active" data-tag="all">All Posts</button>
+        <!-- Tags will be populated dynamically -->
+    </div>
+
+    <div id="postsContainer">
+        <!-- Posts will be loaded here -->
+    </div>
+
+    <script>
+        // Sample posts data - in a real setup, this would be generated from markdown files
+        const posts = [
+            {
+                title: "Getting Started with My Blog",
+                date: "2024-01-15",
+                excerpt: "Welcome to my new blog! Here I'll be sharing thoughts, ideas, and experiences.",
+                tags: ["welcome", "blog"],
+                filename: "posts/getting-started.md"
+            },
+            {
+                title: "Why I Chose GitHub Pages",
+                date: "2024-01-16",
+                excerpt: "Exploring the benefits of using GitHub Pages for a simple, fast blog.",
+                tags: ["github", "web", "blog"],
+                filename: "posts/why-github-pages.md"
+            }
+        ];
+
+        // Get all unique tags
+        const allTags = [...new Set(posts.flatMap(post => post.tags))];
+
+        // Initialize the page
+        function init() {
+            populateTagFilter();
+            displayPosts(posts);
+            setupEventListeners();
+        }
+
+        // Populate tag filter buttons
+        function populateTagFilter() {
+            const tagFilter = document.getElementById('tagFilter');
+            allTags.forEach(tag => {
+                const btn = document.createElement('button');
+                btn.className = 'tag-btn';
+                btn.textContent = tag;
+                btn.setAttribute('data-tag', tag);
+                tagFilter.appendChild(btn);
+            });
+        }
+
+        // Display posts
+        function displayPosts(postsToShow) {
+            const container = document.getElementById('postsContainer');
+            
+            if (postsToShow.length === 0) {
+                container.innerHTML = '<div class="no-posts">No posts found matching your criteria.</div>';
+                return;
+            }
+
+            container.innerHTML = postsToShow.map(post => `
+                <div class="post">
+                    <h2 class="post-title">
+                        <a href="${post.filename.replace('.md', '.html')}">${post.title}</a>
+                    </h2>
+                    <div class="post-date">${formatDate(post.date)}</div>
+                    <div class="post-excerpt">${post.excerpt}</div>
+                    <div class="post-tags">
+                        ${post.tags.map(tag => `<span class="post-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const activeTag = document.querySelector('.tag-btn.active').getAttribute('data-tag');
+                
+                let filteredPosts = posts;
+                
+                // Filter by tag first
+                if (activeTag !== 'all') {
+                    filteredPosts = posts.filter(post => post.tags.includes(activeTag));
+                }
+                
+                // Then filter by search term
+                if (searchTerm) {
+                    filteredPosts = filteredPosts.filter(post => 
+                        post.title.toLowerCase().includes(searchTerm) ||
+                        post.excerpt.toLowerCase().includes(searchTerm) ||
+                        post.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                    );
+                }
+                
+                displayPosts(filteredPosts);
+            });
+
+            // Tag filter functionality
+            document.getElementById('tagFilter').addEventListener('click', function(e) {
+                if (e.target.classList.contains('tag-btn')) {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.tag-btn').forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    e.target.classList.add('active');
+                    
+                    const selectedTag = e.target.getAttribute('data-tag');
+                    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                    
+                    let filteredPosts = posts;
+                    
+                    // Filter by tag
+                    if (selectedTag !== 'all') {
+                        filteredPosts = posts.filter(post => post.tags.includes(selectedTag));
+                    }
+                    
+                    // Filter by search term
+                    if (searchTerm) {
+                        filteredPosts = filteredPosts.filter(post => 
+                            post.title.toLowerCase().includes(searchTerm) ||
+                            post.excerpt.toLowerCase().includes(searchTerm) ||
+                            post.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                        );
+                    }
+                    
+                    displayPosts(filteredPosts);
+                }
+            });
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html> 
