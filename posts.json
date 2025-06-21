@@ -1,5 +1,17 @@
 [
   {
+    "title": "Retrieval-Augmented Generation (RAG)",
+    "date": "2025-06-21",
+    "excerpt": "An explanation of Retrieval-Augmented Generation (RAG) - how AI systems can access external knowledge sources to provide more accurate and up-to-date answers, including the difference between basic RAG and agentic RAG with practical code examples.",
+    "tags": [
+      "RAG",
+      "AI",
+      "agents",
+      "retrieval"
+    ],
+    "filename": "posts/retrieval-augmented-generation.md"
+  },
+  {
     "title": "AI Agents and the Evolution of Software: Insights from IBM and Andrej Karpathy",
     "date": "2025-06-20",
     "excerpt": "I recently watched two excellent videos that provide deep insights into the current state and future of AI agents and how they're fundamentally changing software development. Let me share my thoughts on these presentations.",
