@@ -1,4 +1,4 @@
-# My Blog
+# Blog
 
 A simple, fast blog built with GitHub Pages and Markdown.
 
