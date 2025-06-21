@@ -119,4 +119,63 @@ This blog template is open source and available under the MIT License.
 
 ---
 
-*Happy blogging!* 
+*Happy blogging!*
+
+## How to Add New Posts
+
+1. Create a new markdown file in the `posts/` directory
+2. Follow this format:
+
+```markdown
+# Your Post Title
+
+*Date: YYYY-MM-DD*
+
+Your post content here...
+
+---
+
+*Tags: tag1, tag2, tag3*
+```
+
+3. Run the build script to update the post listing:
+
+```bash
+npm run build
+```
+
+Or if you want to watch for changes automatically:
+
+```bash
+npm run watch
+```
+
+## Setup
+
+1. Install dependencies (optional, for watch mode):
+```bash
+npm install
+```
+
+2. Generate the initial posts.json:
+```bash
+npm run build
+```
+
+3. Deploy to GitHub Pages
+
+## File Structure
+
+- `posts/` - Your markdown blog posts
+- `index.html` - Main blog page
+- `generate-posts.js` - Script to generate posts.json
+- `posts.json` - Auto-generated post metadata (don't edit manually)
+
+## GitHub Pages Deployment
+
+The blog works perfectly with GitHub Pages. Just:
+
+1. Add new posts to the `posts/` directory
+2. Run `npm run build` to update `posts.json`
+3. Commit and push to GitHub
+4. GitHub Pages will automatically serve your updated blog 

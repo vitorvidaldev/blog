@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Artificial Intelligence Timeline: 2020 - 2025",
+    "date": "2025-06-20",
+    "excerpt": "Let's start with a brief summary of AI development over the last few years.",
+    "tags": [
+      "agents",
+      "AI",
+      "history"
+    ],
+    "filename": "posts/ai-development-timeline.md"
+  },
+  {
+    "title": "AI Agents and the Evolution of Software: Insights from IBM and Andrej Karpathy",
+    "date": "2025-01-27",
+    "excerpt": "I recently watched two excellent videos that provide deep insights into the current state and future of AI agents and how they're fundamentally changing software development. Let me share my thoughts on these presentations.",
+    "tags": [
+      "agents",
+      "AI",
+      "software",
+      "LLMs",
+      "automation"
+    ],
+    "filename": "posts/ai-agents-and-software-evolution.md"
+  }
+]

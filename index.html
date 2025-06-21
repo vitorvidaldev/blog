@@ -129,22 +129,25 @@
     </div>
 
     <script>
-        // Sample posts data - in a real setup, this would be generated from markdown files
-        const posts = [
-           {
-                title: "Artificial Intelligence Timeline: 2020 - 2025",
-                date: "2025-06-20",
-                excerpt: "A chronological timeline of AI development from 2020-2025: Transformers (2020), Large Language Models (2021), Diffusion Models (2022), ChatGPT Revolution (2023), Video Generation (2024), to Real-time Multimodal AI (2025).",
-                tags: ["agents", "ai", "history"],
-                filename: "posts/ai-development-timeline.md"
+        // Load posts from generated JSON file
+        async function loadPosts() {
+            try {
+                const response = await fetch('posts.json');
+                const posts = await response.json();
+                return posts;
+            } catch (error) {
+                console.error('Error loading posts.json:', error);
+                // Fallback to empty array
+                return [];
             }
-        ];
+        }
 
-        // Get all unique tags
-        const allTags = [...new Set(posts.flatMap(post => post.tags))];
+        // Global posts variable
+        let posts = [];
 
         // Initialize the page
-        function init() {
+        async function init() {
+            posts = await loadPosts();
             populateTagFilter();
             displayPosts(posts);
             setupEventListeners();
@@ -153,6 +156,7 @@
         // Populate tag filter buttons
         function populateTagFilter() {
             const tagFilter = document.getElementById('tagFilter');
+            const allTags = [...new Set(posts.flatMap(post => post.tags))];
             allTags.forEach(tag => {
                 const btn = document.createElement('button');
                 btn.className = 'tag-btn';

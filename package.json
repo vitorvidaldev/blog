@@ -1,0 +1,12 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "A simple blog with auto-generated post listings",
+  "scripts": {
+    "build": "node generate-posts.js",
+    "watch": "node generate-posts.js && echo 'Watching for changes...' && fswatch -o posts/ | xargs -n1 -I{} node generate-posts.js"
+  },
+  "devDependencies": {
+    "fswatch": "^1.0.0"
+  }
+} 
