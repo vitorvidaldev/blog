@@ -68,8 +68,18 @@ function generatePosts() {
         }
     }
     
-    // Sort posts by date (newest first)
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Sort posts by date (newest first), then alphabetically by title for same dates
+    posts.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        
+        // First compare by date (newest first)
+        if (dateA > dateB) return -1;
+        if (dateA < dateB) return 1;
+        
+        // If dates are the same, sort alphabetically by title
+        return a.title.localeCompare(b.title);
+    });
     
     // Write to posts.json
     fs.writeFileSync('./posts.json', JSON.stringify(posts, null, 2));

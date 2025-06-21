@@ -1,6 +1,6 @@
 # AI Agents and the Evolution of Software: Insights from IBM and Andrej Karpathy
 
-*Date: 2025-01-27*
+*Date: 2025-06-20*
 
 I recently watched two excellent videos that provide deep insights into the current state and future of AI agents and how they're fundamentally changing software development. Let me share my thoughts on these presentations.
 
