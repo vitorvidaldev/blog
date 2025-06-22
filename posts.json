@@ -1,5 +1,14 @@
 [
   {
+    "title": "A few leetcode problems",
+    "date": "2025-06-21",
+    "excerpt": "A few leetcode problem solutions",
+    "tags": [
+      "leetcode"
+    ],
+    "filename": "posts/leetcode-1.md"
+  },
+  {
     "title": "Retrieval-Augmented Generation (RAG)",
     "date": "2025-06-21",
     "excerpt": "An explanation of Retrieval-Augmented Generation (RAG) - how AI systems can access external knowledge sources to provide more accurate and up-to-date answers, including the difference between basic RAG and agentic RAG with practical code examples.",
