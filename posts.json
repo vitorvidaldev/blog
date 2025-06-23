@@ -1,5 +1,15 @@
 [
   {
+    "title": "About CloudFormation",
+    "date": "2025-06-23",
+    "excerpt": "AWS CloudFormation is a powerful Infrastructure as Code (IaC) service that allows you to model and provision AWS resources using declarative templates.",
+    "tags": [
+      "CloudFormation",
+      "AWS"
+    ],
+    "filename": "posts/about-cloudformation.md"
+  },
+  {
     "title": "About vector databases",
     "date": "2025-06-22",
     "excerpt": "Vector databases represent data as mathematical vector embeddings. A vector embedding is represented by an array of numbers. These vectors capture the semantic essence of the data.",
