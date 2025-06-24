@@ -1,5 +1,16 @@
 [
   {
+    "title": "What is Model Context Protocol (MCP)",
+    "date": "2025-06-24",
+    "excerpt": "MCP is an open-source standard to connect LLMs to external tools, such as databases or APIs. It's built on JSON-RPC 2.0, supports stateful sessions, and centers around three main roles: Host, Client, and Server.",
+    "tags": [
+      "AI",
+      "MCP",
+      "Agents"
+    ],
+    "filename": "posts/whats-model-context-protocol.md"
+  },
+  {
     "title": "About CloudFormation",
     "date": "2025-06-23",
     "excerpt": "AWS CloudFormation is a powerful Infrastructure as Code (IaC) service that allows you to model and provision AWS resources using declarative templates.",
