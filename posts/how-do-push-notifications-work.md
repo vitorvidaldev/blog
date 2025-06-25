@@ -1,5 +1,7 @@
 # How do push notifications work?
 
+*Date: 2025-06-24*
+
 Push notifications work through a system involving servers, operating systems, and apps that enables messages to be delivered to devices even when the target app isn't actively running.
 
 ### Basic flow

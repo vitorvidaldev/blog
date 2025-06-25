@@ -1,5 +1,26 @@
 [
   {
+    "title": "About AWS Organizations and AWS Control Tower",
+    "date": "2025-06-25",
+    "excerpt": "AWS Organizations enables centralized management of multiple AWS accounts with policy-based governance, while AWS Control Tower provides a pre-packaged solution for establishing secure multi-account environments with automated guardrails and compliance controls.",
+    "tags": [
+      "AWS",
+      "AWS Organizations",
+      "AWS Control Tower"
+    ],
+    "filename": "posts/aws-organizations-and-control-tower.md"
+  },
+  {
+    "title": "How do push notifications work?",
+    "date": "2025-06-24",
+    "excerpt": "Push notifications work through a system involving servers, operating systems, and apps that enables messages to be delivered to devices even when the target app isn't actively running.",
+    "tags": [
+      "Push notifications",
+      "system design"
+    ],
+    "filename": "posts/how-do-push-notifications-work.md"
+  },
+  {
     "title": "What is Model Context Protocol (MCP)",
     "date": "2025-06-24",
     "excerpt": "MCP is an open-source standard to connect LLMs to external tools, such as databases or APIs. It's built on JSON-RPC 2.0, supports stateful sessions, and centers around three main roles: Host, Client, and Server.",
