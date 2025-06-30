@@ -1,5 +1,16 @@
 [
   {
+    "title": "So, I watched the F1 movie today",
+    "date": "2025-06-29",
+    "excerpt": "Surely, there are a lot of use cases and jobs for computer engineers in Formula 1, right. I asked ChatGPT to give me a few system design descriptions to see if I can design them.",
+    "tags": [
+      "F1",
+      "AWS",
+      "System Design"
+    ],
+    "filename": "posts/so-I-watched-the-f1-movie.md"
+  },
+  {
     "title": "How do trust relationships work across accounts?",
     "date": "2025-06-26",
     "excerpt": "",
@@ -110,5 +121,15 @@
       "history"
     ],
     "filename": "posts/ai-development-timeline.md"
+  },
+  {
+    "title": "Aurora Read Replicas And Multi-AZ",
+    "date": "",
+    "excerpt": "",
+    "tags": [
+      "AWS",
+      "Aurora"
+    ],
+    "filename": "posts/aurora-read-replicas-and-multi-az.md"
   }
 ]
